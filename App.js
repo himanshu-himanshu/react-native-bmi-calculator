@@ -4,20 +4,26 @@ import {
   Text,
   View,
   TextInput,
-  Button,
   TouchableOpacity,
 } from "react-native";
 
 export default function App() {
-  // Hooks to store values
+  // For selecting measurement units
   const [active, setActive] = useState("SI");
+
+  // For result bmi
   const [result, setResult] = useState(" ");
+
+  // Hook for height
   const [height, setHeight] = useState("");
+
+  // Hook for weight
   const [weight, setWeight] = useState("");
 
   // Function to calculate bmi
   const calculateBMI = () => {
     if (height === "" || weight === "") {
+      alert("Inputs cannot be empty");
       return;
     } else {
       if (active === "SI") {
@@ -87,7 +93,7 @@ export default function App() {
         style={[styles.btnContainer, , styles.purple]}
         onPress={() => calculateBMI()}
       >
-        <Text style={[styles.button]}>Calculate</Text>
+        <Text style={[styles.button]}>Calculate BMI</Text>
       </TouchableOpacity>
       {<Text style={styles.resultText}>Your BMI: {result}</Text>}
       <Text style={styles.author}>Submitted By Himanshu (301296001)</Text>
